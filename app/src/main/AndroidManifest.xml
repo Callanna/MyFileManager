@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.callanna.myfilemanager">
+
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_SUPERUSER"/>
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+     <uses-permission android:name="android.permission.WAKE_LOCK"></uses-permission>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.DOWNLOAD_WITHOUT_NOTIFICATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:label="Amaze"
+            android:name=".activities.MainActivity"
+            android:theme="@style/overflow_white2">
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.GET_CONTENT" />
+                <data android:mimeType="*/*" />
+                <category android:name="android.intent.category.OPENABLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <!--<intent-filter>
+                <action android:name="android.intent.action.RINGTONE_PICKER" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>-->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <data android:mimeType="application/zip" />
+                <data android:mimeType="application/rar"/><!--<category android:name="android.intent.category.OPENABLE" />-->
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:label="Settings"
+            android:name=".activities.Preferences"
+            android:theme="@style/overflow_white2">
+
+        </activity>
+        <activity
+            android:uiOptions="splitActionBarWhenNarrow"
+            android:label="Settings"
+            android:name=".activities.ServerControlActivity"
+            android:theme="@style/overflow_white2">
+
+        </activity>
+        <activity
+            android:label="Text Reader"
+            android:name=".activities.TextReader"
+            android:theme="@style/overflow_white2">
+            <intent-filter
+                android:label="Amaze Text Editor">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/*" />
+            </intent-filter>
+
+        </activity>
+        <activity
+            android:label="Database Reader"
+            android:name=".activities.DbViewer"
+            android:theme="@style/overflow_white2"
+            android:screenOrientation="portrait">
+            <intent-filter
+                android:label="Amaze Database Reader">
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="db/*" />
+            </intent-filter>
+
+        </activity>
+        <service
+            android:name = ".services.SearchService"
+            android:label = "Searching"
+            >
+        </service>
+        <service
+            android:name = ".services.ExtractService"
+            android:label = "Extracting"
+            android:process=":amaze"
+            >
+        </service>
+        <service
+            android:name = ".services.ZipTask"
+            android:label = "Compressing"
+            android:process=":amaze"
+            >
+        </service>
+        <service
+            android:name = ".services.CopyService"
+            android:label = "Copying"
+            android:process=":amaze"
+            >
+        </service>
+        <service android:name = ".services.FTPServerService" > </service>
+    </application>
+
+</manifest>
