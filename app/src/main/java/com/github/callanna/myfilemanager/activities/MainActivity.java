@@ -131,7 +131,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
-
 public class MainActivity extends AppCompatActivity implements
         ConnectionCallbacks, OnConnectionFailedListener, GoogleApiClient.ConnectionCallbacks,
         GoogleApiClient.OnConnectionFailedListener {
